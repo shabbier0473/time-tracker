@@ -1,8 +1,5 @@
 pipeline{
     agent{ label  'maven' }
-    triggers{
-        upstream(upstreamProjects: 'compile', threshold: hudson.model.Result.SUCCESS)
-    }
     parameters{
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'origin/master', name: 'BRANCH', type: 'PT_BRANCH'
         gitParameter name: 'TAG',type: 'PT_TAG', selectedValue: 'NONE'
@@ -10,13 +7,17 @@ pipeline{
     stages{
         stage ('validate') {
             tools{ maven 'MAVEN_HOME' }
-            when { 
+            when {
                 expression {BRANCH == 'devlop'  }
             }
             steps{
                 sh 'mvn validate'
             }
         }
+        stage('compile'){
+            steps {
+                build job: 'compile'
+            }
+        }
     }
 }
-
