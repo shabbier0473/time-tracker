@@ -1,5 +1,8 @@
 pipeline{
-    agent{ label  'maven' } 
+    agent{ label  'maven' }
+    triggers{
+        upstream(upstreamProjects: 'compile')
+    }
     parameters{
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'origin/master', name: 'BRANCH', type: 'PT_BRANCH'
         gitParameter name: 'TAG',type: 'PT_TAG', selectedValue: 'NONE'
@@ -12,11 +15,6 @@ pipeline{
             }
             steps{
                 sh 'mvn validate'
-            }
-        }
-        stage('compile'){
-            steps {
-                build job: 'compile' 
             }
         }
     }
