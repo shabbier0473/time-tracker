@@ -1,8 +1,5 @@
 pipeline{
     agent{ label  'maven' }
-    environment {
-        workspace = 'home/maven/workspace/time-tracker'
-    }
     parameters{
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'origin/master', name: 'BRANCH', type: 'PT_BRANCH'
         gitParameter name: 'TAG',type: 'PT_TAG', selectedValue: 'NONE'
@@ -19,7 +16,7 @@ pipeline{
         }
         stage('compile'){
             steps {
-                build job: 'compile'
+                build job: 'compile',parameters: [string(name: 'workspace', value:'/home/maven/workspace/time-tracker')]
             }
         }
     }
