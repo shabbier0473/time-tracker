@@ -1,0 +1,18 @@
+pipeline{
+    agent{
+        node{
+        label 'maven'
+        customWorkspace '/home/maven/workspace/time-tracker'
+        }
+    }
+    stages{
+        stage ('compile'){
+            tools{
+                maven 'MAVEN_HOME'
+            }
+            steps{
+                sh 'mvn compile'
+            }
+        }
+    }
+}
