@@ -16,7 +16,7 @@ pipeline{
         }
         stage('compile'){
             steps {
-                build job: 'compile',parameters: [string(name: 'workspace', value:'/workspace/time-tracker')]
+                build job: 'compile'
             }
         }
     }
