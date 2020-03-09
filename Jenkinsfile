@@ -1,7 +1,7 @@
 pipeline{
     agent{ label  'maven' }
     triggers{
-        upstream(upstreamProjects: 'compile', threshold: hudson.modelResult.SUCCESS)
+        upstream(upstreamProjects: 'compile', threshold: hudson.model.Result.SUCCESS)
     }
     parameters{
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'origin/master', name: 'BRANCH', type: 'PT_BRANCH'
