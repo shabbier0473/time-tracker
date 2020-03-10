@@ -6,7 +6,6 @@ pipeline{
     }
     stages{
         stage ('validate') {
-            parallel {
             tools{ maven 'MAVEN_HOME' }
             when {
                 expression {BRANCH == 'devlop'  }
@@ -23,4 +22,4 @@ pipeline{
         }
     }
 }
-}
+
