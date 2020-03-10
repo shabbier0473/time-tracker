@@ -6,7 +6,7 @@ pipeline{
     }
     stages{
         stage ('dev'){
-            parallel{
+            parallel (
                 stage('validate'){
                     tools{ maven 'MAVEN_HOME' }
                     when{
@@ -21,7 +21,7 @@ pipeline{
                         build job: 'compile'
                     }
                 }
-            }
+            )
             
         }
 
