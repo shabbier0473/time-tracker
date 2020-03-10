@@ -5,8 +5,8 @@ pipeline{
         gitParameter name: 'TAG',type: 'PT_TAG', selectedValue: 'NONE'
     }
     stages{
-        parallel{
         stage ('validate') {
+            parallel {
             tools{ maven 'MAVEN_HOME' }
             when {
                 expression {BRANCH == 'devlop'  }
