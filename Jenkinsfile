@@ -14,7 +14,7 @@ pipeline{
                 sh 'mvn validate'
                 sh 'mvn compile'
                 sh 'mvn test'
-                sh 'mvn install'
+                sh 'mvn sonar:sonar'
             }
         }
 
@@ -28,4 +28,5 @@ pipeline{
                    echo '=====TAG======='
             }
         }
+}
 }
