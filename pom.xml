@@ -42,6 +42,10 @@
                     </configuration>
                 </plugin>
                 <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                </plugin>                     
+                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>findbugs-maven-plugin</artifactId>
                     <version>${findbugs.version}</version>
@@ -96,4 +100,17 @@
             </plugin>
         </plugins>
     </reporting>
+<distributionManagement>
+    <repository>
+        <id>nexus</id>
+        <name>release</name>
+        <url>http://3.235.15.195:9001/repository/maven-releases/</url>
+    </repository>
+    <snapshotRepository>
+        <id>nexus</id>
+        <name>snapshot</name>
+        <url>http://3.235.15.195:9001/repository/maven-snapshots/</url>
+    </snapshotRepository>
+</distributionManagement>
+         
 </project>
