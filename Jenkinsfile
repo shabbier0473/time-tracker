@@ -5,6 +5,7 @@ pipeline{
         gitParameter name: 'TAG',type: 'PT_TAG', selectedValue: 'NONE'
     }
     stages{
+        parallel{
         stage ('validate') {
             tools{ maven 'MAVEN_HOME' }
             when {
@@ -21,4 +22,5 @@ pipeline{
             }
         }
     }
+}
 }
