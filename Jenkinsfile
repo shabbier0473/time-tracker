@@ -1,5 +1,3 @@
-@Library("lib") _
-
 pipeline{
     agent{ label  'maven' } 
     parameters{
@@ -22,9 +20,7 @@ pipeline{
 
         stage ('QA'){
             steps{
-                script{
-                    build('hello')
-                }
+                build job: 'sonar'
             }
         }
 }
