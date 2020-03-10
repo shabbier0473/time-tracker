@@ -12,7 +12,7 @@ pipeline{
             }
             steps{
                 sh 'mvn validate'
-                echo 'shabbir'
+                echo 'shabir'
             }
         }
         stage('compile'){
