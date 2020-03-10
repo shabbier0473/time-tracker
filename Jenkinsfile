@@ -17,7 +17,7 @@ pipeline{
         }
         stage('compile'){
             steps {
-                echo "compiling"
+                build job: "compile"
             }
         }
     }
