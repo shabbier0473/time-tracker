@@ -1,3 +1,5 @@
+@Library("lib") _
+
 pipeline{
     agent{ label  'maven' } 
     parameters{
@@ -19,13 +21,10 @@ pipeline{
         }
 
         stage ('QA'){
-            tools{ maven 'MAVEN_HOME' }
-            when {
-                expression { BRANCH == 'origin/release'  || BRANCH == 'release' }
-            }
             steps{
-                   sh 'mvn install' 
-                   echo '=====TAG======='
+                script{
+                    build('hello')
+                }
             }
         }
 }
