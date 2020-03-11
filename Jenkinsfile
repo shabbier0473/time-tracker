@@ -10,7 +10,11 @@ pipeline{
             steps{
                 sh 'mvn validate'
             }
-
+        }
+        stage ('scm'){
+            script{
+                step2('build')
+            }
         }
     }
 }
