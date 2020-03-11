@@ -12,10 +12,5 @@ pipeline{
             }
 
         }
-        stage('compile'){
-            steps {
-                build job: 'hello'
-            }
-        }
     }
 }
