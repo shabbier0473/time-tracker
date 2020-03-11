@@ -5,19 +5,23 @@ pipeline{
         gitParameter name: 'TAG',type: 'PT_TAG', selectedValue: 'NONE'
     }
     stages{
-        stage ('validate') {
-            tools{ maven 'MAVEN_HOME' }
-            when {
-                expression {BRANCH == 'devlop'  }
-            }
-            steps{
+        stage('hello'){ 
+            paralell {
+                stage ('validate') {
+                tools{ maven 'MAVEN_HOME' }
+                when {
+                    expression {BRANCH == 'devlop'  }
+                }
+                steps{
                 sh 'mvn validate'
+                    }
+                }
+                stage('compile'){
+                steps {
+                    build job: 'hello'
+                }
             }
         }
-        stage('compile'){
-            steps {
-                build job: 'hello'
-            }
         }
     }
 }
