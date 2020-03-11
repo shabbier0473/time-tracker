@@ -19,11 +19,9 @@ pipeline{
 
         stage ('QA'){
             tools{ maven 'MAVEN_HOME' }
-            when {
-                expression { BRANCH == 'origin/release'  || BRANCH == 'release' }
-            }
             steps{
-                   sh 'mvn install' 
+                   sh 'mvn install'
+                   build job : "hello"
                    echo '=====TAG======='
             }
         }
