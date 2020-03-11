@@ -1,6 +1,5 @@
 pipeline{
-    agent { label 'maven' 
-                  customWorkspace '/home/maven/workspace/shabbir' }
+    agent { label 'maven' }
     parameters{
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'origin/master', name: 'BRANCH', type: 'PT_BRANCH'
         gitParameter name: 'TAG',type: 'PT_TAG', selectedValue: 'NONE'
