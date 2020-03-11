@@ -14,9 +14,7 @@ pipeline{
         }
         stage('compile'){
             steps {
-                script{
-                    step1("compile")
-                }
+                build job: 'hello'
             }
         }
     }
