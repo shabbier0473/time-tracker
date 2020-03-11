@@ -13,10 +13,12 @@ pipeline{
         }
         stage ('scm'){
             parallel{
-                steps{
-                step2('build')
+                script{
+                    step2("build")
                 }
-            }     
+                
+            }
+            }
         }
     }
 }
