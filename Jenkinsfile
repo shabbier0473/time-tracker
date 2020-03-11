@@ -14,7 +14,6 @@ pipeline{
         }
         stage('compile'){
             steps {
-                throttle(['concurrent'])
                 build job: 'hello'
             }
         }
