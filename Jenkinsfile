@@ -6,14 +6,15 @@ pipeline{
         gitParameter name: 'TAG',type: 'PT_TAG', selectedValue: 'NONE'
     }
     stages{
-        stage ("compile"){
+        stage ("build"){
             steps{
                 sh "mvn compile"
+                sh "mvn install"
             }
         }
         stage ("test"){
             steps{
-                sh "mvn test"
+                sh "echo test"
             }
         }
     }
