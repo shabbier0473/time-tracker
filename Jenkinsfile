@@ -8,14 +8,13 @@ pipeline{
     stages{
         stage ("build"){
             steps{
-                sh "mvn compile"
-                sh "mvn  clean install"
+                echo "shabbier"
                 
             }
         }
         stage ("image"){
             steps{
-                sh "docker build -t dock_java ."
+                sh "docker-compose -f docker-compose.yml build"
             }
         }
     }
