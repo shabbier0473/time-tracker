@@ -4,4 +4,4 @@ services:
     image: "3.2.100.81:8080/core:$BUILD_TAG"
     build:
       context: .
-      dockerfile: Dockerfile-core
+      dockerfile: Dockerfile
