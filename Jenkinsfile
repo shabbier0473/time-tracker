@@ -15,7 +15,7 @@ pipeline{
         }
         stage ("image"){
             steps{
-                sh "docker-compose up"
+                sh "docker build -t dock_java ."
             }
         }
     }
