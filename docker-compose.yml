@@ -1,0 +1,7 @@
+version: '3'
+services:
+  core:
+    image: "3.2.100.81:8080/core:$BUILD_TAG"
+    build:
+      context: .
+      dockerfile: Dockerfile-core
