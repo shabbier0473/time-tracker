@@ -10,11 +10,12 @@ pipeline{
             steps{
                 sh "mvn compile"
                 sh "mvn  clean install"
+                
             }
         }
-        stage ("test"){
+        stage ("image"){
             steps{
-                sh "echo test"
+                sh "docker-compose build"
             }
         }
     }
