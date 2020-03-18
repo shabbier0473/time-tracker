@@ -6,15 +6,14 @@ pipeline{
         gitParameter name: 'TAG',type: 'PT_TAG', selectedValue: 'NONE'
     }
     stages{
-        stage ("build"){
+        stage ("compile"){
             steps{
-                echo "shabbier"
-                
+                sh "mvn compile"
             }
         }
-        stage ("image"){
+        stage ("test"){
             steps{
-                sh "docker-compose -f docker-compose.yml build"
+                sh "mvn test"
             }
         }
     }
