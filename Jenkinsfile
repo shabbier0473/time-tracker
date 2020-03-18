@@ -1,12 +1,12 @@
 pipeline{
     agent{ label  'maven' } 
+    tools { maven "MAVEN_HOME" }
     parameters{
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'origin/devlop', name: 'BRANCH', type: 'PT_BRANCH'
         gitParameter name: 'TAG',type: 'PT_TAG', selectedValue: 'NONE'
     }
     stages{
         stage ('dev') {
-            tools{ maven 'MAVEN_HOME' }
             when { 
                 expression {BRANCH == 'origin/devlop' || BRANCH == 'devlop'  }
             }
@@ -19,7 +19,6 @@ pipeline{
         }
 
         stage ('QA'){
-            tools{ maven 'MAVEN_HOME' }
             when {
                 expression { BRANCH == 'origin/release'  || BRANCH == 'release' }
             }
