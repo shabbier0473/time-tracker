@@ -1,33 +1,23 @@
 pipeline{
-    agent any
-    tools { maven "MAVEN_HOME" }
+    agent any 
     parameters{
-        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'origin/devlop', name: 'BRANCH', type: 'PT_BRANCH'
-        gitParameter name: 'TAG',type: 'PT_TAG', selectedValue: 'NONE'
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'origin/master', name: 'BRANCH', type: 'PT_BRANCH'
     }
     stages{
-        stage ('dev') {
+        stage ('master') {
             when { 
-                expression {BRANCH == 'origin/devlop' || BRANCH == 'devlop'  }
+                expression {PT_BRANCH == 'origin/master'  }
             }
             steps{
-                sh 'mvn validate'
-                sh 'mvn compile'
-                sh 'mvn test'
-               
+                echo "master"
             }
         }
-
-        stage ('QA'){
+        stage ('release'){
             when {
-                expression { BRANCH == 'origin/release'  || BRANCH == 'release' }
+                expression {PT_BRANCH == 'origin/release'  }
             }
             steps{
-                   sh 'mvn install' 
-                   echo '=====TAG======='
-            }
+                    echo 'release' }
         }
-        
-        
     }
 }
