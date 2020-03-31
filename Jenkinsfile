@@ -1,5 +1,5 @@
 pipeline{
-    agent{ label  'maven' } 
+    agent any
     tools { maven "MAVEN_HOME" }
     parameters{
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'origin/devlop', name: 'BRANCH', type: 'PT_BRANCH'
